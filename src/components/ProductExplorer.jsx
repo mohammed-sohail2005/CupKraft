@@ -21,19 +21,25 @@ const ProductExplorer = ({ addToRefs }) => {
       ]
     },
     top: {
-      image: '/front.png', // Temporary until quota resets
-      label: 'Top View (Coming Soon)',
-      markers: []
+      image: '/top.png',
+      label: 'Top View',
+      markers: [
+        { id: 4, top: '42%', left: '50%', title: 'Universal Fit', desc: 'Designed to fit all standard coffee cup sizes.' }
+      ]
     },
     bottom: {
-      image: '/front.png', // Temporary until quota resets
-      label: 'Bottom View (Coming Soon)',
-      markers: []
+      image: '/bottom.png',
+      label: 'Bottom View',
+      markers: [
+        { id: 5, top: '70%', left: '50%', title: 'Stable Base', desc: 'Reinforced base for a secure grip on the cup.' }
+      ]
     },
     detached: {
-      image: '/front.png', // Temporary until quota resets
-      label: 'Detached View (Coming Soon)',
-      markers: []
+      image: '/detached.png',
+      label: 'Detached View',
+      markers: [
+        { id: 6, top: '35%', left: '25%', title: 'Modular Design', desc: 'Easily detach the handle for storage or hands-free carry.' }
+      ]
     }
   };
 
