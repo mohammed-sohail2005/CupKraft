@@ -5,8 +5,7 @@ const Navbar = ({ onOrderClick }) => {
     <nav className="navbar">
       <div className="container navbar_content">
         <div className="navbar_logo">
-          <span className="logo_cup">Cup</span>
-          <span className="logo_kraft">Kraft</span>
+          <img src="/logo.png" alt="CupKraft Logo" className="logo_img" />
         </div>
         <ul className="navbar_links">
           <li><a href="#explorer">Product</a></li>
@@ -33,12 +32,15 @@ const Navbar = ({ onOrderClick }) => {
           align-items: center;
         }
         .navbar_logo {
-          font-family: var(--font-serif);
-          font-size: 1.5rem;
-          font-weight: 800;
+          height: 48px;
+          display: flex;
+          align-items: center;
         }
-        .logo_cup { color: var(--color-brown); }
-        .logo_kraft { color: var(--color-terracotta); }
+        .logo_img {
+          height: 100%;
+          width: auto;
+          object-fit: contain;
+        }
         .navbar_links {
           display: flex;
           gap: 2rem;
