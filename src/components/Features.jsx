@@ -24,8 +24,8 @@ const Features = ({ addToRefs }) => {
     },
     {
       icon: icons.handle,
-      title: "Detachable Rotating Handle",
-      description: "Quick-release mechanism with 360° rotation for the ultimate carrying convenience."
+      title: "Sturdy Integrated Handle",
+      description: "Ergonomic arch design made from reinforced corrugated cardboard for a secure, balanced carry."
     },
     {
       icon: icons.hands,
@@ -34,8 +34,8 @@ const Features = ({ addToRefs }) => {
     },
     {
       icon: icons.eco,
-      title: "Reusable & Eco-Friendly",
-      description: "Made from FSC-certified sustainable materials. Built to last for endless refills."
+      title: "Sustainable & Eco-Friendly",
+      description: "Made from FSC-certified sustainable materials. Designed for a cleaner, greener tomorrow."
     }
   ];
 

@@ -7,15 +7,15 @@ const About = ({ addToRefs }) => {
         <h2 className="about_title">The CupKraft Mission</h2>
         <p className="about_paragraph">
           At CupKraft, we believe that the small rituals of our day — like that first sip of coffee 
-          — should be effortless. We started with a simple question: "How can we make carrying 
-          coffee as easy as drinking it?" Our modular sleeve was born from a desire to merge 
-          artisanal craft with practical innovation. Every product we make is designed to last, 
-          reduce waste, and make your daily commute just a little bit smoother.
+          — should be effortless and ethical. We started with a simple question: "How can we make carrying 
+          coffee as easy as drinking it?" Our biodegradable sleeve was born from a desire to merge 
+          artisanal craft with eco-conscious innovation. Every product we make is designed for 
+          convenience, sustainability, and making your daily commute a little bit greener.
         </p>
         <div className="about_stats">
           <div className="stat_item">
-            <span className="stat_value">100%</span>
-            <span className="stat_label">Reusable</span>
+            <span className="stat_value">Premium</span>
+            <span className="stat_label">Quality Materials</span>
           </div>
           <div className="stat_divider"></div>
           <div className="stat_item">

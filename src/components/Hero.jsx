@@ -6,7 +6,7 @@ const Hero = ({ addToRefs, onOrderClick }) => {
       <div className="container hero_content">
         <h1 className="hero_headline">Carry Your Coffee. Not The Hassle.</h1>
         <p className="hero_subheadline">
-          The original modular cup sleeve with a detachable handle. Designed for the smarter, safer, hands-free carry.
+          The original eco-friendly cup sleeve with a detachable handle. Designed for the smarter, safer, one-time use carry.
         </p>
         <div className="hero_ctas">
           <button className="btn btn-primary" onClick={onOrderClick}>Order Now</button>

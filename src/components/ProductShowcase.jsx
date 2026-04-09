@@ -17,7 +17,7 @@ const ProductShowcase = ({ addToRefs }) => {
           <ul className="showcase_list">
             <li>
               <span className="checkmark">✓</span>
-              <span>Lightweight and modular design.</span>
+              <span>Lightweight and sturdy cardboard design.</span>
             </li>
             <li>
               <span className="checkmark">✓</span>
@@ -25,11 +25,11 @@ const ProductShowcase = ({ addToRefs }) => {
             </li>
             <li>
               <span className="checkmark">✓</span>
-              <span>Engineered rotation for balanced carrying.</span>
+              <span>Integrated handle for balanced carrying.</span>
             </li>
             <li>
               <span className="checkmark">✓</span>
-              <span>Machine-washable textile sleeve.</span>
+              <span>100% Eco-friendly and biodegradable.</span>
             </li>
           </ul>
         </div>
