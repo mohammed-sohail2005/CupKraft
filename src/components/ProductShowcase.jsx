@@ -1,6 +1,15 @@
 import React from 'react';
+import { useCart } from '../context/CartContext';
 
 const ProductShowcase = ({ addToRefs }) => {
+  const { addToCart } = useCart();
+
+  const product = {
+    id: 'cup-sleeve-modular',
+    title: 'Precision Crafted Modular Sleeve',
+    desc: 'The original eco-friendly cup sleeve with a detachable handle.',
+  };
+
   return (
     <section id="product" className="showcase fade-in" ref={addToRefs}>
       <div className="container showcase_content">
@@ -9,7 +18,7 @@ const ProductShowcase = ({ addToRefs }) => {
           <div className="showcase_badge">Made for everyday café life.</div>
         </div>
         <div className="showcase_info">
-          <h2 className="showcase_title">Precision Crafted for your Morning Brew</h2>
+          <h2 className="showcase_title">{product.title}</h2>
           <p className="showcase_desc">
             The CupKraft modular sleeve is the only coffee accessory that puts convenience first. 
             By combining premium insulation with a detachable rotating handle, we've redefined how you carry your coffee.
@@ -32,6 +41,10 @@ const ProductShowcase = ({ addToRefs }) => {
               <span>100% Eco-friendly and biodegradable.</span>
             </li>
           </ul>
+          <div className="showcase_ctas">
+            <button className="btn btn-primary" onClick={() => addToCart(product)}>Add to Cart</button>
+            <button className="btn btn-outline" onClick={() => window.location.href='#explorer'}>Learn More</button>
+          </div>
         </div>
       </div>
       <style>{`
@@ -80,6 +93,7 @@ const ProductShowcase = ({ addToRefs }) => {
           display: flex;
           flex-direction: column;
           gap: 1.2rem;
+          margin-bottom: 3rem;
         }
         .showcase_list li {
           display: flex;
@@ -92,6 +106,10 @@ const ProductShowcase = ({ addToRefs }) => {
           color: var(--color-terracotta);
           font-size: 1.2rem;
           font-weight: 800;
+        }
+        .showcase_ctas {
+          display: flex;
+          gap: 1rem;
         }
         @media (max-width: 1024px) {
           .showcase_content { gap: 3rem; }
@@ -108,6 +126,9 @@ const ProductShowcase = ({ addToRefs }) => {
             bottom: -0.5rem;
             right: 50%;
             transform: translateX(50%);
+          }
+          .showcase_ctas {
+            justify-content: center;
           }
         }
       `}</style>

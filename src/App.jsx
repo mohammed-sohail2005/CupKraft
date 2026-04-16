@@ -1,13 +1,10 @@
 import React, { useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Hero from './components/Hero';
-import Features from './components/Features';
-import ProductShowcase from './components/ProductShowcase';
-import About from './components/About';
-import Notify from './components/Notify';
 import Footer from './components/Footer';
-import ProductExplorer from './components/ProductExplorer';
 import OrderModal from './components/OrderModal';
+import HomePage from './pages/HomePage';
+import CartPage from './pages/CartPage';
 import useScrollReveal from './hooks/useScrollReveal';
 import './index.css';
 
@@ -21,12 +18,10 @@ function App() {
     <div className="app">
       <Navbar onOrderClick={toggleOrder} />
       <main>
-        <Hero addToRefs={addToRefs} onOrderClick={toggleOrder} />
-        <ProductExplorer addToRefs={addToRefs} />
-        <Features addToRefs={addToRefs} />
-        <ProductShowcase addToRefs={addToRefs} />
-        <About addToRefs={addToRefs} />
-        <Notify addToRefs={addToRefs} />
+        <Routes>
+          <Route path="/" element={<HomePage addToRefs={addToRefs} onOrderClick={toggleOrder} />} />
+          <Route path="/cart" element={<CartPage onOrderClick={toggleOrder} />} />
+        </Routes>
       </main>
       <Footer />
       <OrderModal isOpen={isOrderOpen} onClose={toggleOrder} />

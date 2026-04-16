@@ -1,18 +1,34 @@
 import React from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { useCart } from '../context/CartContext';
 
 const Navbar = ({ onOrderClick }) => {
+  const { cartTotal } = useCart();
+  const location = useLocation();
+  const isHome = location.pathname === '/';
+
+  const NavLink = ({ href, children }) => (
+    <li>
+      <a href={isHome ? href : `/${href}`}>{children}</a>
+    </li>
+  );
+
   return (
     <nav className="navbar">
       <div className="container navbar_content">
-        <div className="navbar_logo">
+        <Link to="/" className="navbar_logo">
           <img src="/logo.png" alt="CupKraft Logo" className="logo_img" />
-        </div>
+        </Link>
         <ul className="navbar_links">
-          <li><a href="#explorer">Product</a></li>
-          <li><a href="#features">Innovation</a></li>
-          <li><a href="#about">Our Story</a></li>
+          <NavLink href="#explorer">Product</NavLink>
+          <NavLink href="#features">Innovation</NavLink>
+          <NavLink href="#story">Our Story</NavLink>
         </ul>
         <div className="navbar_cta">
+          <Link to="/cart" className="cart_link">
+            <span className="cart_icon">🛒</span>
+            {cartTotal > 0 && <span className="cart_badge">{cartTotal}</span>}
+          </Link>
           <button className="btn btn-primary" onClick={onOrderClick}>Order Now</button>
         </div>
       </div>
@@ -53,6 +69,39 @@ const Navbar = ({ onOrderClick }) => {
         }
         .navbar_links a:hover {
           color: var(--color-terracotta);
+        }
+        .navbar_cta {
+          display: flex;
+          align-items: center;
+          gap: 1.5rem;
+        }
+        .cart_link {
+          position: relative;
+          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--color-brown);
+          transition: var(--transition);
+        }
+        .cart_link:hover {
+          transform: scale(1.1);
+        }
+        .cart_badge {
+          position: absolute;
+          top: -8px;
+          right: -8px;
+          background-color: var(--color-terracotta);
+          color: white;
+          font-size: 0.7rem;
+          font-weight: 800;
+          width: 18px;
+          height: 18px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 2px solid var(--color-bg);
         }
         @media (max-width: 768px) {
           .navbar_links { display: none; }

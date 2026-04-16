@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useCart } from '../context/CartContext';
 
 const OrderModal = ({ isOpen, onClose }) => {
   const [isRedirecting, setIsRedirecting] = useState(false);
+  const { cart, cartTotal, clearCart } = useCart();
 
   if (!isOpen) return null;
 
@@ -12,12 +14,20 @@ const OrderModal = ({ isOpen, onClose }) => {
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
 
+    // Construct cart details string
+    let cartDetails = "";
+    if (cart.length > 0) {
+      cartDetails = cart.map(item => `- ${item.title} (x${item.quantity})`).join('\n');
+    } else {
+      cartDetails = `- Modular Cup Sleeve (x${data.quantity})`;
+    }
+
     // Construct the mailto URL with pre-filled details
     const subject = encodeURIComponent(`New CupKraft Order - ${data.name}`);
     const body = encodeURIComponent(
       `CUPKRAFT ORDER DETAILS:\n\n` +
-      `Product: Modular Cup Sleeve\n` +
-      `Quantity: ${data.quantity}\n\n` +
+      `${cartDetails}\n\n` +
+      `Total Items: ${cart.length > 0 ? cartTotal : data.quantity}\n\n` +
       `CUSTOMER INFORMATION:\n` +
       `Name: ${data.name}\n` +
       `Phone: ${data.phone}\n` +
@@ -36,6 +46,7 @@ const OrderModal = ({ isOpen, onClose }) => {
     // Show a helpful message before closing
     setTimeout(() => {
       setIsRedirecting(false);
+      if (cart.length > 0) clearCart();
       onClose();
     }, 3000);
   };

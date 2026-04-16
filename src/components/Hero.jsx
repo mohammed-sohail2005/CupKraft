@@ -1,4 +1,5 @@
 import React from 'react';
+import { useCart } from '../context/CartContext';
 
 const Hero = ({ addToRefs, onOrderClick }) => {
   return (
@@ -9,7 +10,7 @@ const Hero = ({ addToRefs, onOrderClick }) => {
           The original eco-friendly cup sleeve with a detachable handle. Designed for the smarter, safer, one-time use carry.
         </p>
         <div className="hero_ctas">
-          <button className="btn btn-primary" onClick={onOrderClick}>Order Now</button>
+          <button className="btn btn-primary" onClick={() => addToCart({ id: 'cup-sleeve-modular', title: 'Modular Cup Sleeve', desc: 'The original eco-friendly cup sleeve.' })}>Add to Cart</button>
           <a href="#explorer" className="btn btn-outline">Explore Catalog</a>
         </div>
         <div className="hero_image_wrapper">
