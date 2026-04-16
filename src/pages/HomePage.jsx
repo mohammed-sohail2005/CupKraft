@@ -6,13 +6,13 @@ import ProductShowcase from '../components/ProductShowcase';
 import About from '../components/About';
 import Notify from '../components/Notify';
 
-const HomePage = ({ addToRefs, onOrderClick }) => {
+const HomePage = ({ addToRefs, onOrderClick, onAddToCartClick }) => {
   return (
     <>
-      <Hero addToRefs={addToRefs} onOrderClick={onOrderClick} />
+      <Hero addToRefs={addToRefs} onOrderClick={onOrderClick} onAddToCartClick={onAddToCartClick} />
       <ProductExplorer addToRefs={addToRefs} />
       <Features addToRefs={addToRefs} />
-      <ProductShowcase addToRefs={addToRefs} />
+      <ProductShowcase addToRefs={addToRefs} onAddToCartClick={onAddToCartClick} />
       <About addToRefs={addToRefs} />
       <Notify addToRefs={addToRefs} />
     </>

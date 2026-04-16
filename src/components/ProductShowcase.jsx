@@ -1,9 +1,7 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
 
-const ProductShowcase = ({ addToRefs }) => {
-  const { addToCart } = useCart();
-
+const ProductShowcase = ({ addToRefs, onAddToCartClick }) => {
   const product = {
     id: 'cup-sleeve-modular',
     title: 'Precision Crafted Modular Sleeve',
@@ -42,7 +40,7 @@ const ProductShowcase = ({ addToRefs }) => {
             </li>
           </ul>
           <div className="showcase_ctas">
-            <button className="btn btn-primary" onClick={() => addToCart(product)}>Add to Cart</button>
+            <button className="btn btn-primary" onClick={() => onAddToCartClick(product)}>Add to Cart</button>
             <button className="btn btn-outline" onClick={() => window.location.href='#explorer'}>Learn More</button>
           </div>
         </div>

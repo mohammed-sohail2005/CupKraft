@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { useCart } from '../context/CartContext';
 
 const OrderModal = ({ isOpen, onClose }) => {
+  const { cart, cartTotal, cartTotalPrice, clearCart, UNIT_PRICE } = useCart();
   const [isRedirecting, setIsRedirecting] = useState(false);
-  const { cart, cartTotal, clearCart } = useCart();
 
   if (!isOpen) return null;
 
@@ -17,17 +17,20 @@ const OrderModal = ({ isOpen, onClose }) => {
     // Construct cart details string
     let cartDetails = "";
     if (cart.length > 0) {
-      cartDetails = cart.map(item => `- ${item.title} (x${item.quantity})`).join('\n');
+      cartDetails = cart.map(item => `- ${item.title} (x${item.quantity}) - ₹${item.quantity * (item.price || UNIT_PRICE)}`).join('\n');
     } else {
-      cartDetails = `- Modular Cup Sleeve (x${data.quantity})`;
+      cartDetails = `- Modular Cup Sleeve (x${data.quantity}) - ₹${data.quantity * UNIT_PRICE}`;
     }
+
+    const grandTotal = cart.length > 0 ? cartTotalPrice : data.quantity * UNIT_PRICE;
 
     // Construct the mailto URL with pre-filled details
     const subject = encodeURIComponent(`New CupKraft Order - ${data.name}`);
     const body = encodeURIComponent(
       `CUPKRAFT ORDER DETAILS:\n\n` +
       `${cartDetails}\n\n` +
-      `Total Items: ${cart.length > 0 ? cartTotal : data.quantity}\n\n` +
+      `Total Items: ${cart.length > 0 ? cartTotal : data.quantity}\n` +
+      `Grand Total: ₹${grandTotal}\n\n` +
       `CUSTOMER INFORMATION:\n` +
       `Name: ${data.name}\n` +
       `Phone: ${data.phone}\n` +

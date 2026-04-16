@@ -3,7 +3,7 @@ import { useCart } from '../context/CartContext';
 import { Link } from 'react-router-dom';
 
 const CartPage = ({ onOrderClick }) => {
-  const { cart, removeFromCart, updateQuantity, cartTotal } = useCart();
+  const { cart, removeFromCart, updateQuantity, cartTotal, cartTotalPrice } = useCart();
 
   return (
     <div className="cart_page container">
@@ -25,12 +25,16 @@ const CartPage = ({ onOrderClick }) => {
                 <div className="item_info">
                   <h3>{item.title}</h3>
                   <p>{item.desc}</p>
+                  <p className="item_price">₹{item.price || 15} per unit</p>
                 </div>
                 <div className="item_actions">
                   <div className="quantity_controls">
                     <button onClick={() => updateQuantity(item.id, item.quantity - 1)}>-</button>
                     <span>{item.quantity}</span>
                     <button onClick={() => updateQuantity(item.id, item.quantity + 1)}>+</button>
+                  </div>
+                  <div className="item_subtotal">
+                    ₹{(item.price || 15) * item.quantity}
                   </div>
                   <button className="remove_btn" onClick={() => removeFromCart(item.id)}>Remove</button>
                 </div>
@@ -43,6 +47,10 @@ const CartPage = ({ onOrderClick }) => {
             <div className="summary_row">
               <span>Total Items</span>
               <span>{cartTotal}</span>
+            </div>
+            <div className="summary_row total">
+              <span>Grand Total</span>
+              <span>₹{cartTotalPrice}</span>
             </div>
             <button className="btn btn-primary checkout_btn" onClick={onOrderClick}>Proceed to Order</button>
           </div>
